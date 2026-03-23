@@ -1,100 +1,9 @@
 # Análise Estratégica de Vendas — Marketplace Olist
 
-## Contexto do Projeto
+## Insight Principal
 
-Este projeto foi desenvolvido a partir de um caso de negócio onde atuei como Analista de BI com o objetivo de investigar a desaceleração no crescimento das vendas de um marketplace.
-
-A análise foi construída utilizando a base pública da Olist, contendo dados de pedidos, clientes, vendedores, produtos, pagamentos, avaliações e logística.
-
-O desafio consistia em transformar dados brutos em insights estratégicos capazes de responder às principais dúvidas da diretoria sobre o desempenho do negócio.
-
----
-
-## Objetivo
-
-Construir um dashboard analítico que permita:
-
-- Acompanhar a evolução das vendas ao longo do tempo  
-- Identificar os principais drivers de desempenho  
-- Detectar problemas e oportunidades no negócio  
-- Apoiar a tomada de decisão estratégica  
-
----
-
-## Perguntas de Negócio
-
-O projeto foi guiado pelas seguintes perguntas:
-
-- Como as vendas evoluíram ao longo do tempo?  
-- Existem períodos de crescimento ou queda?  
-- Quais categorias de produto vendem mais?  
-- Existem regiões com mais vendas que outras?  
-- Existe relação entre avaliações e vendas?  
-- O prazo de entrega impacta a satisfação dos clientes?  
-
----
-
-## Arquitetura de Dados
-
-O modelo de dados foi estruturado em formato estrela, com tabelas fato e dimensões.
-
-### Tabelas Fato
-
-**fato_vendas**
-- pedidos, produtos, vendedores, clientes  
-- valores de venda e frete  
-- datas de aprovação e entrega  
-
-**fato_review**
-- avaliações dos clientes  
-- notas e comentários  
-
-### Tabelas Dimensão
-
-- dim_cliente  
-- dim_vendedores  
-- dim_produtos  
-- dim_localizações  
-
----
-
-## Abordagem Analítica
-
-A análise foi conduzida utilizando uma abordagem orientada a drivers, partindo do problema principal até a causa raiz:
-
-1. Queda na receita  
-2. Redução no volume de vendas  
-3. Análise de clientes (aquisição vs retenção)  
-4. Identificação de dependência de novos clientes  
-5. Validação de hipóteses operacionais  
-6. Análise por categoria  
-7. Identificação da causa raiz  
-
----
-
-## Principais Insights
-
-- O crescimento desacelerou devido à queda na entrada de novos clientes  
-- A retenção é extremamente baixa  
-- O negócio depende quase totalmente de aquisição  
-- A mudança no mix de categorias impactou diretamente o volume de novos clientes  
-
----
-
-## Conclusão
-
-A queda na receita foi causada pela redução no volume de vendas, impulsionada pela diminuição na entrada de novos clientes.
-
-Como a base apresenta baixa retenção, o negócio depende fortemente de aquisição. A mudança no mix de categorias reduziu o volume de novos clientes, levando à queda geral de desempenho.
-
----
-
-## Recomendações Estratégicas
-
-- Reforçar categorias com alto poder de aquisição  
-- Desenvolver estratégias de retenção de clientes  
-- Equilibrar o mix de categorias  
-- Monitorar continuamente aquisição vs retenção  
+A queda na receita foi causada pela redução na aquisição de novos clientes, decorrente de uma mudança no mix de categorias.  
+Categorias que historicamente traziam maior volume de novos clientes perderam relevância, e o crescimento de outras categorias não compensou essa perda.
 
 ---
 
@@ -114,28 +23,79 @@ Como a base apresenta baixa retenção, o negócio depende fortemente de aquisi�
 
 ---
 
-## Ferramentas Utilizadas
+## Contexto do Projeto
 
-- Microsoft Power BI  
-- SQL  
-- DuckDB  
-- ODBC  
+Este projeto foi desenvolvido a partir de um caso de negócio com o objetivo de investigar a desaceleração no crescimento das vendas de um marketplace.
 
----
-
-## Diferenciais do Projeto
-
-- Conexão direta com banco (sem importação estática)  
-- Modelagem otimizada para análise  
-- Abordagem orientada a drivers de negócio  
-- Foco em storytelling analítico  
-- Dashboard voltado para tomada de decisão  
+A análise foi construída utilizando a base pública da Olist, contendo dados de pedidos, clientes, vendedores, produtos, pagamentos, avaliações e logística.
 
 ---
 
-## Resultado
+## Abordagem Analítica
 
-O dashboard permite uma visão clara e estratégica do negócio, conectando métricas operacionais a impactos reais na receita, facilitando decisões orientadas por dados.
+A análise foi conduzida utilizando uma abordagem orientada a drivers, validando hipóteses até a identificação da causa raiz:
+
+- Queda na receita identificada  
+- Redução no volume de vendas (pedidos e clientes)  
+- Análise de aquisição vs retenção  
+- Identificação de baixa retenção e alta dependência de novos clientes  
+
+### Validação de hipóteses
+
+- Experiência do cliente (avaliações) → não causou a queda  
+- Logística (tempo de entrega) → não causou a queda  
+- Mudança no comportamento de aquisição → causa confirmada  
+
+---
+
+## Principais Insights
+
+- Redução significativa na entrada de novos clientes  
+- Base com baixa retenção  
+- Forte dependência de aquisição para sustentar o crescimento  
+- Mudança no mix de categorias impactando diretamente o volume  
+
+---
+
+## Conclusão
+
+A queda na receita foi impulsionada pela redução no volume de vendas, causada pela diminuição na entrada de novos clientes.
+
+A análise mostrou que categorias com maior capacidade de aquisição perderam participação, enquanto categorias em crescimento não compensaram a perda em volume.
+
+---
+
+## Recomendações Estratégicas
+
+- Reforçar categorias com alto poder de aquisição  
+- Desenvolver estratégias de retenção de clientes  
+- Equilibrar o mix de categorias  
+- Monitorar continuamente aquisição vs retenção  
+
+---
+
+## Queries SQL
+
+As transformações e análises foram realizadas diretamente na fonte de dados utilizando SQL.
+
+Os arquivos estão organizados na pasta `/queries`, separados por tema:
+
+- vendas.sql  
+- clientes.sql  
+- categorias.sql  
+- experiencia.sql  
+
+---
+
+## Arquitetura Técnica
+
+O projeto foi desenvolvido utilizando conexão direta com banco de dados (DuckDB via ODBC), evitando importação de dados no Power BI.
+
+Essa abordagem permite:
+
+- Maior performance  
+- Controle sobre as transformações  
+- Redução de redundância de dados  
 
 ---
 
@@ -149,32 +109,21 @@ O arquivo pode ser acessado através do link abaixo:
 
 ---
 
-## Fonte de Dados e Conexão
+## Ferramentas Utilizadas
 
-Este projeto não utiliza base de dados local versionada no repositório.
-
-Os dados foram originalmente obtidos a partir do dataset público da Olist e estruturados em um banco de dados.
-
-A arquitetura adotada foi:
-
-- Conversão da base para DuckDB  
-- Conexão direta com o Power BI via ODBC  
-- Transformações realizadas utilizando SQL na fonte  
-
-Essa abordagem foi escolhida para:
-
-- Melhorar a performance  
-- Evitar redundância de dados  
-- Garantir maior controle sobre as transformações  
+- Microsoft Power BI  
+- SQL  
+- DuckDB  
+- ODBC  
 
 ---
 
-## Observação
+## Resultado
 
-Para executar o dashboard localmente, é necessário configurar a conexão com o banco de dados conforme a estrutura utilizada no projeto.
+O projeto permite identificar claramente os principais drivers de desempenho do negócio, conectando métricas operacionais à queda de receita.
 
 ---
 
 ## Autor
 
-Rafael Martins  
+Rafael Martins
