@@ -58,15 +58,6 @@ O modelo de dados foi estruturado em formato estrela, com tabelas fato e dimens�
 
 ---
 
-## Pipeline de Dados
-
-- Base original em SQLite  
-- Conversão para DuckDB  
-- Conexão via ODBC com o Power BI  
-- Transformações realizadas com SQL direto no modelo  
-
----
-
 ## Abordagem Analítica
 
 A análise foi conduzida utilizando uma abordagem orientada a drivers, partindo do problema principal até a causa raiz:
@@ -145,6 +136,42 @@ Como a base apresenta baixa retenção, o negócio depende fortemente de aquisi�
 ## Resultado
 
 O dashboard permite uma visão clara e estratégica do negócio, conectando métricas operacionais a impactos reais na receita, facilitando decisões orientadas por dados.
+
+---
+
+## Acesso ao Dashboard
+
+Devido ao tamanho do arquivo e à arquitetura do projeto, o dashboard (.pbix) não está versionado neste repositório.
+
+O arquivo pode ser acessado através do link abaixo:
+
+[Download do Dashboard (.pbix)](https://drive.google.com/file/d/16rLjykJmu4Wij_C2ubOeai4wmrZRXebL/view?usp=drive_link)
+
+---
+
+## Fonte de Dados e Conexão
+
+Este projeto não utiliza base de dados local versionada no repositório.
+
+Os dados foram originalmente obtidos a partir do dataset público da Olist e estruturados em um banco de dados.
+
+A arquitetura adotada foi:
+
+- Conversão da base para DuckDB  
+- Conexão direta com o Power BI via ODBC  
+- Transformações realizadas utilizando SQL na fonte  
+
+Essa abordagem foi escolhida para:
+
+- Melhorar a performance  
+- Evitar redundância de dados  
+- Garantir maior controle sobre as transformações  
+
+---
+
+## Observação
+
+Para executar o dashboard localmente, é necessário configurar a conexão com o banco de dados conforme a estrutura utilizada no projeto.
 
 ---
 
