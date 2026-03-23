@@ -110,16 +110,16 @@ Como a base apresenta baixa retenção, o negócio depende fortemente de aquisi�
 ## Dashboard
 
 ### Visão Geral
-![Visão Geral](Imagens/visao_geral.png)
+![Visão Geral](imagens/visao_geral.png)
 
 ### Clientes
-![Clientes](Imagens/clientes.png)
+![Clientes](imagens/clientes.png)
 
 ### Categorias
-![Categorias](Imagens/categorias.png)
+![Categorias](imagens/categorias.png)
 
 ### Experiência
-![Experiência](Imagens/experiencia.png)
+![Experiência](imagens/experiencia.png)
 
 ---
 
